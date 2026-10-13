@@ -57,6 +57,8 @@ final class StatsRepository
             'remise'          => (float) $row['remise'],
             'prix_livraison'  => (float) $row['prix_livraison'],
             'prix_total'      => (float) $row['prix_total'],
+            // Chiffre d'affaires « menu » de la commande : prix du menu remise déduite (hors livraison)
+            'chiffre_affaires' => round((float) $row['prix_menu'] - (float) $row['remise'], 2),
             'statut'          => $row['statut'],
         ];
     }
@@ -93,21 +95,26 @@ final class StatsRepository
             ['$match' => self::match($menuId, $from, $to)],
             ['$group' => [
                 '_id'              => '$menu_id',
-                'menu_titre'       => ['$first' => '$menu_titre'],
                 'nb_commandes'     => ['$sum' => 1],
-                'chiffre_affaires' => ['$sum' => ['$subtract' => ['$prix_menu', '$remise']]],
+                'chiffre_affaires' => ['$sum' => '$chiffre_affaires'],
                 'total_encaisse'   => ['$sum' => '$prix_total'],
             ]],
-            ['$sort' => ['nb_commandes' => -1, 'menu_titre' => 1]],
+            ['$sort' => ['nb_commandes' => -1]],
         ]);
 
-        return array_map(static fn (array $r): array => [
+        // Les titres à jour des menus proviennent de la base relationnelle
+        $titles = array_column(MenuRepository::options(), 'titre', 'menu_id');
+
+        $stats = array_map(static fn (array $r): array => [
             'menu_id'          => (int) $r['_id'],
-            'menu_titre'       => (string) $r['menu_titre'],
+            'menu_titre'       => (string) ($titles[(int) $r['_id']] ?? 'Menu #' . $r['_id']),
             'nb_commandes'     => (int) $r['nb_commandes'],
             'chiffre_affaires' => round((float) $r['chiffre_affaires'], 2),
             'total_encaisse'   => round((float) $r['total_encaisse'], 2),
             'panier_moyen'     => $r['nb_commandes'] > 0 ? round((float) $r['chiffre_affaires'] / $r['nb_commandes'], 2) : 0.0,
         ], $rows);
+
+        usort($stats, static fn (array $a, array $b): int => [$b['nb_commandes'], $a['menu_titre']] <=> [$a['nb_commandes'], $b['menu_titre']]);
+        return $stats;
     }
 }
