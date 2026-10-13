@@ -28,12 +28,19 @@ final class Mailer
             $mail->isSMTP();
             $mail->Host       = (string) Env::get('MAIL_HOST');
             $mail->Port       = (int) Env::get('MAIL_PORT', '587');
-            $mail->SMTPAuth   = true;
+            // Authentification seulement si un identifiant est fourni (Mailpit en local n'en demande pas)
+            $mail->SMTPAuth   = Env::get('MAIL_USERNAME') !== null;
             $mail->Username   = (string) Env::get('MAIL_USERNAME');
             $mail->Password   = (string) Env::get('MAIL_PASSWORD');
-            $mail->SMTPSecure = Env::get('MAIL_ENCRYPTION', 'tls') === 'ssl'
-                ? PHPMailer::ENCRYPTION_SMTPS
-                : PHPMailer::ENCRYPTION_STARTTLS;
+            $encryption = Env::get('MAIL_ENCRYPTION', 'tls');
+            if ($encryption === 'ssl') {
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+            } elseif ($encryption === 'tls') {
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            } else {
+                $mail->SMTPSecure = '';
+                $mail->SMTPAutoTLS = false;
+            }
             $mail->CharSet    = 'UTF-8';
             $mail->setFrom((string) Env::get('MAIL_FROM', 'no-reply@viteetgourmand.fr'), 'Vite & Gourmand');
             $mail->addAddress($to);

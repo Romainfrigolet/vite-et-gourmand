@@ -1,0 +1,38 @@
+﻿ID,Titre,User story,Epic,Sprint,Priorité,Estimation (h),Branche Git,Statut
+VG-01,Analyse du besoin et cahier des charges,"En tant que chef de projet, je veux un cahier des charges validé afin de cadrer le développement",Cadrage,Sprint 0,Haute,2.0,—,Terminé
+VG-02,Maquettes : wireframes et mockups,"En tant que client, je veux voir les maquettes desktop et mobile avant le développement",Cadrage,Sprint 0,Haute,3.5,—,Terminé
+VG-03,Charte graphique,"En tant que client, je veux une identité visuelle cohérente (couleurs, polices)",Cadrage,Sprint 0,Moyenne,1.5,—,Terminé
+VG-04,Modélisation MCD / MLD,"En tant que développeur, je veux un modèle de données validé avant de coder",Cadrage,Sprint 0,Haute,2.0,feature/socle-base-de-donnees,Terminé
+VG-05,Environnement Docker et dépôt Git,"En tant que développeur, je veux un environnement reproductible et un dépôt avec main/develop",Socle,Sprint 1,Haute,2.0,feature/socle-base-de-donnees,Terminé
+VG-06,Scripts SQL schema.sql et data.sql,"En tant que développeur, je veux créer la base et ses données de test par des scripts SQL",Socle,Sprint 1,Haute,2.5,feature/socle-base-de-donnees,Terminé
+VG-07,"Socle MVC : routeur, PDO, session, CSRF","En tant que développeur, je veux un socle sécurisé réutilisable",Socle,Sprint 1,Haute,3.5,feature/socle-base-de-donnees,Terminé
+VG-08,Page d'accueil et avis validés,"En tant que visiteur, je veux découvrir l'entreprise, son équipe et les avis clients",Front public,Sprint 1,Haute,2.0,feature/front-public,Terminé
+VG-09,Menu de navigation et pied de page (horaires),"En tant que visiteur, je veux naviguer facilement et voir les horaires du lundi au dimanche",Front public,Sprint 1,Haute,1.5,feature/front-public,Terminé
+VG-10,Vue globale des menus,"En tant que visiteur, je veux voir tous les menus avec titre, description, minimum et prix",Front public,Sprint 1,Haute,2.0,feature/front-public,Terminé
+VG-11,Filtres dynamiques des menus,"En tant que visiteur, je veux filtrer par prix, fourchette, thème, régime et nb de personnes sans recharger",Front public,Sprint 1,Haute,2.5,feature/front-public,Terminé
+VG-12,Détail d'un menu,"En tant que visiteur, je veux voir la galerie, les plats, les allergènes et les conditions mises en évidence",Front public,Sprint 1,Haute,2.0,feature/front-public,Terminé
+VG-13,Page contact,"En tant que visiteur, je veux contacter l'entreprise (titre, description, e-mail)",Front public,Sprint 1,Moyenne,1.5,feature/front-public,Terminé
+VG-14,"Mentions légales, CGV, confidentialité","En tant que client, je veux connaître les conditions et l'usage de mes données (RGPD)",Front public,Sprint 1,Moyenne,1.5,feature/front-public,Terminé
+VG-15,Création de compte,"En tant que visiteur, je veux créer un compte avec un mot de passe sécurisé et recevoir un e-mail de bienvenue",Comptes,Sprint 2,Haute,2.0,feature/authentification,Terminé
+VG-16,Connexion et anti force brute,"En tant qu'utilisateur, je veux me connecter de façon sécurisée",Comptes,Sprint 2,Haute,2.0,feature/authentification,Terminé
+VG-17,Mot de passe oublié,"En tant qu'utilisateur, je veux réinitialiser mon mot de passe via un lien reçu par e-mail",Comptes,Sprint 2,Haute,1.5,feature/authentification,Terminé
+VG-18,Commande d'un menu,"En tant qu'utilisateur, je veux commander un menu avec mes informations pré-remplies",Commande,Sprint 2,Haute,3.5,feature/commande-espace-client,Terminé
+VG-19,"Calcul du prix, remise et livraison","En tant qu'utilisateur, je veux voir le détail du prix (remise 10 %, livraison 5 € + 0,59 €/km) avant de valider",Commande,Sprint 2,Haute,2.5,feature/commande-espace-client,Terminé
+VG-20,E-mail de confirmation de commande,"En tant qu'utilisateur, je veux recevoir la confirmation de ma commande",Commande,Sprint 2,Haute,0.5,feature/commande-espace-client,Terminé
+VG-21,Espace utilisateur : commandes et suivi,"En tant qu'utilisateur, je veux voir mes commandes et leur suivi daté",Espace client,Sprint 2,Haute,2.0,feature/commande-espace-client,Terminé
+VG-22,Modifier / annuler sa commande,"En tant qu'utilisateur, je veux modifier ou annuler tant que la commande n'est pas acceptée",Espace client,Sprint 2,Haute,1.5,feature/commande-espace-client,Terminé
+VG-23,Donner un avis,"En tant qu'utilisateur, je veux noter (1 à 5) et commenter une commande terminée",Espace client,Sprint 2,Moyenne,1.5,feature/commande-espace-client,Terminé
+VG-24,Modifier mes informations / supprimer mon compte,"En tant qu'utilisateur, je veux gérer mes données personnelles",Espace client,Sprint 2,Moyenne,1.5,feature/commande-espace-client,Terminé
+VG-25,Gestion des commandes (employé),"En tant qu'employé, je veux filtrer les commandes par statut et client et changer leur statut",Espace employé,Sprint 3,Haute,2.5,feature/espace-employe,Terminé
+VG-26,Retour de matériel et e-mails de statut,"En tant qu'employé, je veux que le client soit prévenu (600 € de frais, invitation à l'avis)",Espace employé,Sprint 3,Haute,1.5,feature/espace-employe,Terminé
+VG-27,Annulation / modification après contact client,"En tant qu'employé, je dois indiquer le mode de contact et le motif",Espace employé,Sprint 3,Haute,1.5,feature/espace-employe,Terminé
+VG-28,CRUD menus et galerie d'images,"En tant qu'employé, je veux créer, modifier, supprimer les menus et leurs images",Espace employé,Sprint 3,Haute,2.5,feature/espace-employe,Terminé
+VG-29,CRUD plats et allergènes,"En tant qu'employé, je veux gérer les plats et leurs allergènes",Espace employé,Sprint 3,Haute,1.5,feature/espace-employe,Terminé
+VG-30,Gestion des horaires,"En tant qu'employé, je veux modifier les horaires affichés",Espace employé,Sprint 3,Moyenne,0.5,feature/espace-employe,Terminé
+VG-31,Modération des avis,"En tant qu'employé, je veux valider ou refuser les avis",Espace employé,Sprint 3,Haute,0.5,feature/espace-employe,Terminé
+VG-32,Comptes employés,"En tant qu'administrateur, je veux créer et désactiver des comptes employés",Administration,Sprint 3,Haute,1.5,feature/espace-administrateur,Terminé
+VG-33,Statistiques MongoDB,"En tant qu'administrateur, je veux comparer les commandes et le CA par menu (graphique, filtres)",Administration,Sprint 3,Haute,2.5,feature/espace-administrateur,Terminé
+VG-34,Accessibilité et responsive,"En tant qu'utilisateur en situation de handicap, je veux un site conforme au RGAA",Qualité,Sprint 4,Haute,1.5,fix/ajustements-interface,Terminé
+VG-35,Tests des parcours,"En tant que chef de projet, je veux que tous les parcours soient testés",Qualité,Sprint 4,Haute,2.0,fix/ajustements-interface,Terminé
+VG-36,Déploiement,"En tant que client, je veux l'application en ligne et fonctionnelle",Livraison,Sprint 4,Haute,2.0,feature/deploiement-documentation,Terminé
+VG-37,README et documentations PDF,"En tant que jury, je veux comprendre l'installation, l'usage et les choix techniques",Livraison,Sprint 4,Haute,2.5,feature/deploiement-documentation,Terminé
