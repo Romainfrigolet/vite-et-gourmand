@@ -11,6 +11,7 @@
 declare(strict_types=1);
 
 use App\Controllers\AccountController;
+use App\Controllers\Admin;
 use App\Controllers\AuthController;
 use App\Controllers\CommandeController;
 use App\Controllers\ContactController;
@@ -91,3 +92,10 @@ $router->post('/gestion/horaires', [Gestion\HoraireController::class, 'update'],
 $router->get('/gestion/avis', [Gestion\AvisController::class, 'index'], ['auth', 'staff']);
 $router->post('/gestion/avis/{id}/valider', [Gestion\AvisController::class, 'validate'], ['auth', 'staff']);
 $router->post('/gestion/avis/{id}/refuser', [Gestion\AvisController::class, 'refuse'], ['auth', 'staff']);
+
+// --- Espace administrateur -----------------------------------------------------------------
+$router->get('/admin', [Admin\StatsController::class, 'index'], ['auth', 'admin']);
+$router->get('/admin/api/stats', [Admin\StatsController::class, 'data'], ['auth', 'admin']);
+$router->get('/admin/employes', [Admin\EmployeController::class, 'index'], ['auth', 'admin']);
+$router->post('/admin/employes', [Admin\EmployeController::class, 'store'], ['auth', 'admin']);
+$router->post('/admin/employes/{id}/statut', [Admin\EmployeController::class, 'toggle'], ['auth', 'admin']);
