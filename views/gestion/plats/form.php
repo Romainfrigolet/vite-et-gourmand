@@ -39,7 +39,7 @@ $action = $plat ? '/gestion/plats/' . (int) $plat['plat_id'] . '/modifier' : '/g
                     </div>
                 </div>
                 <fieldset class="mt-4">
-                    <legend class="h6">Allergènes présents</legend>
+                    <legend class="h6 fs-6 fw-semibold">Allergènes présents</legend>
                     <div class="row">
                         <?php foreach ($allergenes as $a): ?>
                             <div class="col-6 col-md-4">

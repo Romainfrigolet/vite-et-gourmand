@@ -48,13 +48,13 @@ $canCancel = OrderStatus::cancellableByStaff($commande['statut']);
                     <h2 id="modif-title" class="h5">Modifier ou annuler</h2>
                     <p class="small text-muted">Obligatoire : contacter le client (GSM ou e-mail) avant toute modification ou annulation, puis indiquer le mode de contact et le motif.</p>
                     <?php if ($canEdit): ?>
-                        <a href="/gestion/commandes/<?= $id ?>/modifier" class="btn btn-outline-primary mb-3">Modifier la commande</a>
+                        <a href="/gestion/commandes/<?= $id ?>/modifier" class="btn btn-outline-primary mb-3 align-self-start">Modifier la commande</a>
                     <?php endif; ?>
                     <?php if ($canCancel): ?>
                         <form method="post" action="/gestion/commandes/<?= $id ?>/annuler" novalidate data-confirm="Confirmer l'annulation de cette commande ?">
                             <?= csrf_field() ?>
                             <fieldset class="mb-3">
-                                <legend class="form-label">Client contacté par</legend>
+                                <legend class="form-label fs-6">Client contacté par</legend>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="mode_contact" id="contact_tel" value="telephone" <?= old('mode_contact') === 'telephone' ? 'checked' : '' ?> required>
                                     <label class="form-check-label" for="contact_tel">Appel GSM</label>
