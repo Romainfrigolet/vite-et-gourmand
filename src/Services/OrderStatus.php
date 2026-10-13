@@ -27,7 +27,7 @@ final class OrderStatus
 
     public const BADGES = [
         'en_attente'              => 'text-bg-warning',
-        'accepte'                 => 'text-bg-info',
+        'accepte'                 => 'text-bg-dark',
         'en_preparation'          => 'text-bg-primary',
         'en_livraison'            => 'text-bg-primary',
         'livre'                   => 'text-bg-success',

@@ -90,7 +90,7 @@ $editable = OrderStatus::editableByCustomer($commande['statut']);
                         <form method="post" action="/mon-compte/commandes/<?= (int) $commande['commande_id'] ?>/avis" novalidate>
                             <?= csrf_field() ?>
                             <fieldset class="mb-3">
-                                <legend class="form-label">Note <span class="visually-hidden">(de 1 à 5)</span></legend>
+                                <legend class="form-label fs-6">Note <span class="visually-hidden">(de 1 à 5)</span></legend>
                                 <?php for ($i = 1; $i <= 5; $i++): ?>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="note" id="note<?= $i ?>" value="<?= $i ?>" <?= old('note') === (string) $i ? 'checked' : '' ?> required>

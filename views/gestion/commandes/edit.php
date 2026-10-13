@@ -9,7 +9,7 @@
                 <?= csrf_field() ?>
                 <div class="alert alert-warning">Contactez le client avant de modifier sa commande, puis indiquez ci-dessous le mode de contact et le motif.</div>
                 <fieldset class="mb-4">
-                    <legend class="h6">Contact préalable avec le client</legend>
+                    <legend class="h6 fs-6 fw-semibold">Contact préalable avec le client</legend>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="mode_contact" id="contact_tel" value="telephone" <?= old('mode_contact') === 'telephone' ? 'checked' : '' ?> required>
                         <label class="form-check-label" for="contact_tel">Appel GSM</label>
