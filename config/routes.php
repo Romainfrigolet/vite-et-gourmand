@@ -14,6 +14,7 @@ use App\Controllers\AccountController;
 use App\Controllers\AuthController;
 use App\Controllers\CommandeController;
 use App\Controllers\ContactController;
+use App\Controllers\Gestion;
 use App\Controllers\HomeController;
 use App\Controllers\MenuController;
 use App\Controllers\PageController;
@@ -57,3 +58,36 @@ $router->get('/mon-compte/commandes/{id}/modifier', [AccountController::class, '
 $router->post('/mon-compte/commandes/{id}/modifier', [AccountController::class, 'update'], ['auth', 'customer']);
 $router->post('/mon-compte/commandes/{id}/annuler', [AccountController::class, 'cancel'], ['auth', 'customer']);
 $router->post('/mon-compte/commandes/{id}/avis', [AccountController::class, 'review'], ['auth', 'customer']);
+
+// --- Espace employé (accessible aussi à l'administrateur) ----------------------------------
+$router->get('/gestion', [Gestion\DashboardController::class, 'index'], ['auth', 'staff']);
+$router->get('/gestion/commandes', [Gestion\CommandeController::class, 'index'], ['auth', 'staff']);
+$router->get('/gestion/commandes/{id}', [Gestion\CommandeController::class, 'show'], ['auth', 'staff']);
+$router->post('/gestion/commandes/{id}/statut', [Gestion\CommandeController::class, 'status'], ['auth', 'staff']);
+$router->post('/gestion/commandes/{id}/materiel', [Gestion\CommandeController::class, 'material'], ['auth', 'staff']);
+$router->get('/gestion/commandes/{id}/modifier', [Gestion\CommandeController::class, 'editForm'], ['auth', 'staff']);
+$router->post('/gestion/commandes/{id}/modifier', [Gestion\CommandeController::class, 'update'], ['auth', 'staff']);
+$router->post('/gestion/commandes/{id}/annuler', [Gestion\CommandeController::class, 'cancel'], ['auth', 'staff']);
+
+$router->get('/gestion/menus', [Gestion\MenuController::class, 'index'], ['auth', 'staff']);
+$router->get('/gestion/menus/nouveau', [Gestion\MenuController::class, 'create'], ['auth', 'staff']);
+$router->post('/gestion/menus/nouveau', [Gestion\MenuController::class, 'store'], ['auth', 'staff']);
+$router->get('/gestion/menus/{id}/modifier', [Gestion\MenuController::class, 'edit'], ['auth', 'staff']);
+$router->post('/gestion/menus/{id}/modifier', [Gestion\MenuController::class, 'update'], ['auth', 'staff']);
+$router->post('/gestion/menus/{id}/supprimer', [Gestion\MenuController::class, 'delete'], ['auth', 'staff']);
+$router->post('/gestion/menus/{id}/images', [Gestion\MenuController::class, 'addImage'], ['auth', 'staff']);
+$router->post('/gestion/images/{id}/supprimer', [Gestion\MenuController::class, 'deleteImage'], ['auth', 'staff']);
+
+$router->get('/gestion/plats', [Gestion\PlatController::class, 'index'], ['auth', 'staff']);
+$router->get('/gestion/plats/nouveau', [Gestion\PlatController::class, 'create'], ['auth', 'staff']);
+$router->post('/gestion/plats/nouveau', [Gestion\PlatController::class, 'store'], ['auth', 'staff']);
+$router->get('/gestion/plats/{id}/modifier', [Gestion\PlatController::class, 'edit'], ['auth', 'staff']);
+$router->post('/gestion/plats/{id}/modifier', [Gestion\PlatController::class, 'update'], ['auth', 'staff']);
+$router->post('/gestion/plats/{id}/supprimer', [Gestion\PlatController::class, 'delete'], ['auth', 'staff']);
+
+$router->get('/gestion/horaires', [Gestion\HoraireController::class, 'edit'], ['auth', 'staff']);
+$router->post('/gestion/horaires', [Gestion\HoraireController::class, 'update'], ['auth', 'staff']);
+
+$router->get('/gestion/avis', [Gestion\AvisController::class, 'index'], ['auth', 'staff']);
+$router->post('/gestion/avis/{id}/valider', [Gestion\AvisController::class, 'validate'], ['auth', 'staff']);
+$router->post('/gestion/avis/{id}/refuser', [Gestion\AvisController::class, 'refuse'], ['auth', 'staff']);
