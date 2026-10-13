@@ -27,7 +27,7 @@
     <script src="<?= asset('assets/vendor/bootstrap/bootstrap.bundle.min.js') ?>"></script>
     <script src="<?= asset('assets/js/app.js') ?>"></script>
     <?php foreach (\App\Core\View::scripts() as $script): ?>
-        <script src="<?= asset('assets/js/' . $script) ?>"></script>
+        <script src="<?= asset(str_contains($script, '/') ? 'assets/' . $script : 'assets/js/' . $script) ?>"></script>
     <?php endforeach; ?>
 </body>
 </html>
