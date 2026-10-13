@@ -1,0 +1,172 @@
+/* =====================================================================
+   Vite & Gourmand — Feuille de style principale
+   Surcouche de Bootstrap 5 : charte graphique (couleurs, typographies)
+   Contrastes vérifiés AA (RGAA 3.2) : texte ≥ 4,5:1
+   ===================================================================== */
+
+/* --- Polices auto-hébergées (aucun appel à un service tiers : RGPD) --- */
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/inter-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 600; font-display: swap; src: url("../fonts/inter-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 700; font-display: swap; src: url("../fonts/inter-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Playfair Display"; font-style: normal; font-weight: 600; font-display: swap; src: url("../fonts/playfair-display-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Playfair Display"; font-style: normal; font-weight: 700; font-display: swap; src: url("../fonts/playfair-display-latin-700-normal.woff2") format("woff2"); }
+
+/* --- Palette --- */
+:root {
+    --vg-bordeaux: #7B1E3A;        /* couleur principale — 9,9:1 sur blanc */
+    --vg-bordeaux-dark: #5C1229;   /* survol / focus */
+    --vg-or: #C8963E;              /* accent décoratif (jamais pour du texte sur fond clair) */
+    --vg-or-texte: #7A5617;        /* or lisible sur fond clair — 6,3:1 */
+    --vg-creme: #FBF7F2;           /* fond de page */
+    --vg-sable: #F1E6DA;           /* fonds de sections */
+    --vg-encre: #2B2118;           /* texte principal — 15:1 */
+    --vg-gris: #5F5A55;            /* texte secondaire — 6,6:1 */
+    --vg-vert: #3E6B48;            /* succès / végétarien — 6,1:1 */
+
+    --bs-primary: var(--vg-bordeaux);
+    --bs-primary-rgb: 123, 30, 58;
+    --bs-link-color: var(--vg-bordeaux);
+    --bs-link-color-rgb: 123, 30, 58;
+    --bs-link-hover-color: var(--vg-bordeaux-dark);
+    --bs-link-hover-color-rgb: 92, 18, 41;
+    --bs-body-bg: var(--vg-creme);
+    --bs-body-color: var(--vg-encre);
+    --bs-body-font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --bs-secondary-color: var(--vg-gris);
+    --bs-border-radius: .6rem;
+    --bs-focus-ring-color: rgba(123, 30, 58, .35);
+}
+
+body { display: flex; flex-direction: column; min-height: 100vh; }
+main { flex: 1 0 auto; }
+
+h1, h2, h3, .h1, .h2, .h3, .display-5, .display-6, .navbar-brand {
+    font-family: "Playfair Display", Georgia, serif;
+    font-weight: 700;
+}
+
+.text-muted, .text-body-secondary { color: var(--vg-gris) !important; }
+.text-or { color: var(--vg-or-texte); }
+.bg-sable { background-color: var(--vg-sable); }
+.bg-bordeaux { background-color: var(--vg-bordeaux); color: #fff; }
+
+/* --- Accessibilité --- */
+.skip-link {
+    position: absolute; left: 1rem; top: -100px; z-index: 2000;
+    background: var(--vg-encre); color: #fff; padding: .75rem 1rem; border-radius: .4rem;
+}
+.skip-link:focus { top: 1rem; color: #fff; }
+
+:focus-visible {
+    outline: 3px solid var(--vg-or) !important;
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* --- Boutons --- */
+.btn-primary {
+    --bs-btn-bg: var(--vg-bordeaux);
+    --bs-btn-border-color: var(--vg-bordeaux);
+    --bs-btn-hover-bg: var(--vg-bordeaux-dark);
+    --bs-btn-hover-border-color: var(--vg-bordeaux-dark);
+    --bs-btn-active-bg: var(--vg-bordeaux-dark);
+    --bs-btn-active-border-color: var(--vg-bordeaux-dark);
+    --bs-btn-disabled-bg: #9a6a78;
+    --bs-btn-disabled-border-color: #9a6a78;
+}
+.btn-outline-primary {
+    --bs-btn-color: var(--vg-bordeaux);
+    --bs-btn-border-color: var(--vg-bordeaux);
+    --bs-btn-hover-bg: var(--vg-bordeaux);
+    --bs-btn-hover-border-color: var(--vg-bordeaux);
+    --bs-btn-active-bg: var(--vg-bordeaux-dark);
+}
+.btn-or {
+    --bs-btn-bg: var(--vg-or);
+    --bs-btn-color: var(--vg-encre);
+    --bs-btn-border-color: var(--vg-or);
+    --bs-btn-hover-bg: #b4832f;
+    --bs-btn-hover-color: var(--vg-encre);
+    --bs-btn-hover-border-color: #b4832f;
+}
+
+/* --- En-tête --- */
+.site-header { background: #fff; border-bottom: 3px solid var(--vg-or); }
+.site-header .navbar-brand { color: var(--vg-bordeaux); font-size: 1.5rem; display: flex; align-items: center; gap: .5rem; }
+.site-header .navbar-brand img { width: 42px; height: 42px; }
+.site-header .nav-link { color: var(--vg-encre); font-weight: 600; }
+.site-header .nav-link:hover, .site-header .nav-link.active { color: var(--vg-bordeaux); }
+.site-header .nav-link.active { text-decoration: underline; text-decoration-color: var(--vg-or); text-decoration-thickness: 3px; text-underline-offset: 6px; }
+
+/* --- Pied de page --- */
+.site-footer { background: var(--vg-encre); color: #EFE7DE; }
+.site-footer a { color: #fff; }
+.site-footer h2 { font-size: 1.15rem; color: var(--vg-or); }
+.site-footer .horaires dt { font-weight: 600; }
+.site-footer .horaires dd { margin-bottom: .15rem; }
+
+/* --- Héros de la page d'accueil --- */
+.hero {
+    background:
+        linear-gradient(120deg, rgba(43, 33, 24, .88), rgba(123, 30, 58, .80)),
+        url("../img/hero.svg") center / cover no-repeat;
+    color: #fff;
+}
+.hero .lead { color: #F7EFE6; }
+
+/* --- Cartes de menus --- */
+.menu-card { border: 0; box-shadow: 0 .25rem 1rem rgba(43, 33, 24, .08); transition: transform .15s ease, box-shadow .15s ease; }
+.menu-card:hover { transform: translateY(-3px); box-shadow: 0 .6rem 1.5rem rgba(43, 33, 24, .14); }
+.menu-card .card-img-top { aspect-ratio: 4 / 3; height: auto; object-fit: cover; }
+.menu-card .price { font-size: 1.25rem; font-weight: 700; color: var(--vg-bordeaux); }
+.badge-theme { background: var(--vg-sable); color: var(--vg-encre); font-weight: 600; }
+.badge-regime { background: #E3EFE5; color: var(--vg-vert); font-weight: 600; }
+
+/* --- Détail d'un menu --- */
+.gallery-main { aspect-ratio: 4 / 3; height: auto; object-fit: cover; width: 100%; border-radius: var(--bs-border-radius); }
+.gallery-thumb { width: 96px; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: .4rem; border: 3px solid transparent; cursor: pointer; padding: 0; }
+.gallery-thumb-btn[aria-pressed="true"] .gallery-thumb { border-color: var(--vg-or); }
+.gallery-thumbs button { background: none; border: 0; padding: 0; }
+.conditions-box { border-left: 6px solid var(--vg-or); background: #FFF6E5; }
+.allergenes { font-size: .9rem; color: var(--vg-gris); }
+
+/* --- Avis --- */
+.avis-card { border: 0; background: #fff; box-shadow: 0 .25rem .75rem rgba(43, 33, 24, .06); }
+.stars { color: var(--vg-or-texte); letter-spacing: .1em; }
+
+/* --- Filtres --- */
+.filters { background: #fff; border-radius: var(--bs-border-radius); box-shadow: 0 .25rem 1rem rgba(43, 33, 24, .06); }
+.results-loading { opacity: .5; pointer-events: none; }
+
+/* --- Commande : récapitulatif du prix --- */
+.recap { position: sticky; top: 1rem; }
+.recap dl { display: grid; grid-template-columns: 1fr auto; gap: .35rem 1rem; margin: 0; }
+.recap dt { font-weight: 400; }
+.recap dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+.recap .total { font-size: 1.2rem; font-weight: 700; border-top: 1px solid #ddd; padding-top: .5rem; }
+
+/* --- Suivi de commande (frise) --- */
+.timeline { list-style: none; padding-left: 0; border-left: 3px solid var(--vg-sable); margin-left: .5rem; }
+.timeline li { position: relative; padding: 0 0 1rem 1.25rem; }
+.timeline li::before { content: ""; position: absolute; left: -.6rem; top: .3rem; width: .9rem; height: .9rem; border-radius: 50%; background: var(--vg-or); border: 2px solid #fff; }
+.timeline li:last-child::before { background: var(--vg-bordeaux); }
+
+/* --- Back-office --- */
+.admin-nav .nav-link { color: var(--vg-encre); }
+.admin-nav .nav-link.active { background: var(--vg-bordeaux); color: #fff; }
+.stat-tile { background: #fff; border-radius: var(--bs-border-radius); box-shadow: 0 .25rem .75rem rgba(43, 33, 24, .06); }
+.stat-tile .value { font-size: 1.8rem; font-weight: 700; color: var(--vg-bordeaux); font-variant-numeric: tabular-nums; }
+.chart-box { position: relative; height: 360px; }
+.table > :not(caption) > * > * { background-color: transparent; }
+.table-hover > tbody > tr:hover > * { background-color: rgba(123, 30, 58, .04); }
+
+/* Indicateur de force du mot de passe */
+.password-rules li { color: var(--vg-gris); }
+.password-rules li.ok { color: var(--vg-vert); }
+.password-rules li.ok::before { content: "✓ "; }
+.password-rules li:not(.ok)::before { content: "• "; }
+
+.legal h2 { font-size: 1.4rem; margin-top: 2rem; }

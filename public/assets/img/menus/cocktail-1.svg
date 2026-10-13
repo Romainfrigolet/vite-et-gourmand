@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img">
+<defs><radialGradient id="g" cx="50%" cy="40%" r="75%"><stop offset="0" stop-color="#264653" stop-opacity="0.85"/><stop offset="1" stop-color="#264653"/></radialGradient></defs>
+<rect width="800" height="600" fill="url(#g)"/>
+<rect y="420" width="800" height="180" fill="#000" opacity="0.12"/>
+<path d="M629.0 8 L653.0 8 L644.6 32 L644.6 51.2 L650.6 56 L631.4 56 L637.4 51.2 L637.4 32 Z" fill="#ffffff" opacity="0.8"/>
+<path d="M679.5 82 L696.5 82 L690.55 99 L690.55 112.6 L694.8 116 L681.2 116 L685.45 112.6 L685.45 99 Z" fill="#F6E7C1" opacity="0.8"/>
+<path d="M719.5 113 L738.5 113 L731.85 132 L731.85 147.2 L736.6 151 L721.4 151 L726.15 147.2 L726.15 132 Z" fill="#F6E7C1" opacity="0.8"/>
+<path d="M58.0 166 L84.0 166 L74.9 192 L74.9 212.8 L81.4 218 L60.6 218 L67.1 212.8 L67.1 192 Z" fill="#ffffff" opacity="0.8"/>
+<path d="M253.5 174 L268.5 174 L263.25 189 L263.25 201.0 L267.0 204 L255.0 204 L258.75 201.0 L258.75 189 Z" fill="#E9C46A" opacity="0.8"/>
+<path d="M430.0 174 L454.0 174 L445.6 198 L445.6 217.2 L451.6 222 L432.4 222 L438.4 217.2 L438.4 198 Z" fill="#E9C46A" opacity="0.8"/>
+<path d="M239.5 8 L264.5 8 L255.75 33 L255.75 53.0 L262.0 58 L242.0 58 L248.25 53.0 L248.25 33 Z" fill="#E9C46A" opacity="0.8"/>
+<ellipse cx="400" cy="470" rx="250" ry="40" fill="#000" opacity="0.18"/>
+<circle cx="400" cy="330" r="190" fill="#F4F1EA"/>
+<circle cx="400" cy="330" r="150" fill="#ffffff" opacity="0.65"/>
+<ellipse cx="400" cy="340" rx="95" ry="62" fill="#E76F51"/>
+<ellipse cx="380" cy="325" rx="55" ry="30" fill="#2A9D8F" opacity="0.9"/>
+<circle cx="461" cy="342" r="10" fill="#E9C46A"/>
+<circle cx="370" cy="361" r="8" fill="#E9C46A"/>
+<circle cx="308" cy="321" r="13" fill="#E9C46A"/>
+<circle cx="494" cy="317" r="14" fill="#E9C46A"/>
+<circle cx="337" cy="288" r="8" fill="#E9C46A"/>
+<circle cx="441" cy="335" r="13" fill="#E9C46A"/>
+<rect x="150" y="200" width="12" height="250" rx="6" fill="#ffffff" opacity="0.9"/>
+<rect x="138" y="190" width="36" height="70" rx="10" fill="#ffffff" opacity="0.9"/>
+<rect x="640" y="190" width="14" height="260" rx="7" fill="#ffffff" opacity="0.9"/>
+</svg>
