@@ -1,0 +1,6 @@
+# Aucun script ne doit être exécuté dans le dossier des fichiers téléversés
+<FilesMatch "\.(php|phtml|phar|php\d)$">
+    Require all denied
+</FilesMatch>
+php_flag engine off
+Options -Indexes
