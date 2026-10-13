@@ -85,11 +85,29 @@ function csrf_field(): string
     return '<input type="hidden" name="_csrf" value="' . e(Csrf::token()) . '">';
 }
 
-function old(string $key, mixed $default = ''): string
+/** Saisies du formulaire précédent (réaffichées après une erreur de validation). */
+function old_input(): array
 {
     static $old = null;
     $old ??= Session::pullOld();
-    return (string) ($old[$key] ?? $default);
+    return $old;
+}
+
+function has_old(): bool
+{
+    return old_input() !== [];
+}
+
+function old(string $key, mixed $default = ''): string
+{
+    $value = old_input()[$key] ?? $default;
+    return is_array($value) ? '' : (string) $value;
+}
+
+/** Valeurs multiples (cases à cocher) : anciennes saisies si présentes, sinon valeurs par défaut. */
+function old_array(string $key, array $default = []): array
+{
+    return has_old() ? array_map('intval', (array) (old_input()[$key] ?? [])) : $default;
 }
 
 function errors(): array
