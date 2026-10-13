@@ -10,6 +10,19 @@ namespace App\Core;
  */
 final class View
 {
+    private static array $scripts = [];
+
+    /** Déclare un script JavaScript propre à la page (chargé en bas du gabarit). */
+    public static function script(string $file): void
+    {
+        self::$scripts[$file] = true;
+    }
+
+    public static function scripts(): array
+    {
+        return array_keys(self::$scripts);
+    }
+
     public static function render(string $template, array $data = [], ?string $layout = 'layouts/main'): string
     {
         $content = self::capture($template, $data);
