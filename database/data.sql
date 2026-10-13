@@ -194,13 +194,13 @@ INSERT INTO commande (commande_id, numero_commande, utilisateur_id, menu_id, dat
                       adresse_prestation, code_postal_prestation, ville_prestation, distance_km, nombre_personne,
                       prix_menu, remise, prix_livraison, prix_total, statut, pret_materiel, restitution_materiel) VALUES
     (1, 'VG-2026-0001', 3, 5, '2026-05-02 10:12:00', '2026-05-16', '12:00:00', '8 cours de l''Intendance', '33000', 'Bordeaux', 0, 6,  228.00, 0.00,  0.00, 228.00, 'terminee', 0, 0),
-    (2, 'VG-2026-0002', 4, 3, '2026-03-20 18:40:00', '2026-04-05', '11:30:00', '3 allée des Vignes', '33600', 'Pessac', 7.4, 15, 540.00, 54.00, 9.37, 495.37, 'terminee', 1, 1),
+    (2, 'VG-2026-0002', 4, 3, '2026-03-20 18:40:00', '2026-04-05', '11:30:00', '3 allée des Vignes', '33600', 'Pessac', 5.4, 15, 540.00, 54.00, 8.19, 494.19, 'terminee', 1, 1),
     (3, 'VG-2026-0003', 4, 6, '2026-06-01 09:05:00', '2026-06-28', '19:00:00', '15 quai des Chartrons', '33000', 'Bordeaux', 0, 25, 650.00, 65.00, 0.00, 585.00, 'terminee', 1, 1),
     (4, 'VG-2026-0004', 3, 4, '2026-04-01 14:22:00', '2026-04-12', '12:30:00', '8 cours de l''Intendance', '33000', 'Bordeaux', 0, 6,  186.00, 0.00,  0.00, 186.00, 'terminee', 0, 0),
-    (5, 'VG-2026-0005', 3, 7, '2026-08-20 16:00:00', '2026-09-26', '18:00:00', 'Château Lamothe, 1 route de Lamothe', '33650', 'Saint-Médard-d''Eyrans', 17.8, 50, 2900.00, 290.00, 15.50, 2625.50, 'attente_retour_materiel', 1, 0),
-    (6, 'VG-2026-0006', 4, 5, '2026-10-05 11:10:00', '2026-10-24', '20:00:00', '3 allée des Vignes', '33600', 'Pessac', 7.4, 4, 152.00, 0.00, 9.37, 161.37, 'en_preparation', 0, 0),
+    (5, 'VG-2026-0005', 3, 7, '2026-08-20 16:00:00', '2026-09-26', '18:00:00', 'Château Lamothe, 1 route de Lamothe', '33650', 'Saint-Médard-d''Eyrans', 14.2, 50, 2900.00, 290.00, 13.38, 2623.38, 'attente_retour_materiel', 1, 0),
+    (6, 'VG-2026-0006', 4, 5, '2026-10-05 11:10:00', '2026-10-24', '20:00:00', '3 allée des Vignes', '33600', 'Pessac', 5.4, 4, 152.00, 0.00, 8.19, 160.19, 'en_preparation', 0, 0),
     (7, 'VG-2026-0007', 3, 1, '2026-10-10 09:30:00', '2026-12-24', '19:30:00', '8 cours de l''Intendance', '33000', 'Bordeaux', 0, 10, 520.00, 0.00, 0.00, 520.00, 'en_attente', 0, 0),
-    (8, 'VG-2026-0008', 4, 2, '2026-10-11 20:15:00', '2026-12-25', '12:00:00', '3 allée des Vignes', '33600', 'Pessac', 7.4, 12, 468.00, 46.80, 9.37, 430.57, 'accepte', 0, 0);
+    (8, 'VG-2026-0008', 4, 2, '2026-10-11 20:15:00', '2026-12-25', '12:00:00', '3 allée des Vignes', '33600', 'Pessac', 5.4, 12, 468.00, 46.80, 8.19, 429.39, 'accepte', 0, 0);
 
 INSERT INTO commande_historique (commande_id, statut, commentaire, modifie_par, date_modification) VALUES
     (1, 'en_attente', 'Commande passée par le client', 3, '2026-05-02 10:12:00'),
