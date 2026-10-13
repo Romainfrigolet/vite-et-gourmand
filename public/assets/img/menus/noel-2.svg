@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img">
+<defs><radialGradient id="g" cx="50%" cy="40%" r="75%"><stop offset="0" stop-color="#2F4A3A" stop-opacity="0.85"/><stop offset="1" stop-color="#2F4A3A"/></radialGradient></defs>
+<rect width="800" height="600" fill="url(#g)"/>
+<rect y="420" width="800" height="180" fill="#000" opacity="0.12"/>
+<polygon points="685.0,144.0 691.6,159.9 708.8,161.3 695.7,172.5 699.7,189.2 685.0,180.2 670.3,189.2 674.3,172.5 661.2,161.3 678.4,159.9" fill="#F5EBDD" opacity="0.85"/>
+<polygon points="704.0,56.0 708.5,66.8 720.2,67.7 711.3,75.4 714.0,86.8 704.0,80.7 694.0,86.8 696.7,75.4 687.8,67.7 699.5,66.8" fill="#F6E7C1" opacity="0.85"/>
+<polygon points="302.0,133.0 307.0,145.1 320.1,146.1 310.1,154.6 313.2,167.4 302.0,160.6 290.8,167.4 293.9,154.6 283.9,146.1 297.0,145.1" fill="#F6E7C1" opacity="0.85"/>
+<polygon points="747.0,71.0 751.0,80.5 761.3,81.4 753.4,88.1 755.8,98.1 747.0,92.8 738.2,98.1 740.6,88.1 732.7,81.4 743.0,80.5" fill="#F5EBDD" opacity="0.85"/>
+<polygon points="697.0,69.0 703.9,85.5 721.7,87.0 708.1,98.6 712.3,116.0 697.0,106.7 681.7,116.0 685.9,98.6 672.3,87.0 690.1,85.5" fill="#ffffff" opacity="0.85"/>
+<polygon points="82.0,33.0 89.4,50.8 108.6,52.3 94.0,64.9 98.5,83.7 82.0,73.6 65.5,83.7 70.0,64.9 55.4,52.3 74.6,50.8" fill="#ffffff" opacity="0.85"/>
+<polygon points="451.0,99.0 455.2,109.2 466.2,110.1 457.8,117.2 460.4,127.9 451.0,122.2 441.6,127.9 444.2,117.2 435.8,110.1 446.8,109.2" fill="#ffffff" opacity="0.85"/>
+<ellipse cx="400" cy="470" rx="250" ry="40" fill="#000" opacity="0.18"/>
+<circle cx="400" cy="330" r="190" fill="#F3E3D3"/>
+<circle cx="400" cy="330" r="150" fill="#ffffff" opacity="0.65"/>
+<ellipse cx="400" cy="340" rx="95" ry="62" fill="#4A2C20"/>
+<ellipse cx="380" cy="325" rx="55" ry="30" fill="#7A4A2E" opacity="0.9"/>
+<circle cx="420" cy="295" r="16" fill="#F5EBDD"/>
+<circle cx="360" cy="283" r="8" fill="#F5EBDD"/>
+<circle cx="319" cy="363" r="13" fill="#F5EBDD"/>
+<circle cx="475" cy="303" r="13" fill="#F5EBDD"/>
+<circle cx="432" cy="376" r="14" fill="#F5EBDD"/>
+<circle cx="441" cy="308" r="12" fill="#F5EBDD"/>
+<rect x="150" y="200" width="12" height="250" rx="6" fill="#ffffff" opacity="0.9"/>
+<rect x="138" y="190" width="36" height="70" rx="10" fill="#ffffff" opacity="0.9"/>
+<rect x="640" y="190" width="14" height="260" rx="7" fill="#ffffff" opacity="0.9"/>
+</svg>

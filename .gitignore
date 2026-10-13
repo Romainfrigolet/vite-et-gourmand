@@ -1,0 +1,21 @@
+# Dépendances
+/vendor/
+
+# Configuration locale (secrets)
+.env
+
+# Fichiers générés
+/storage/logs/*
+!/storage/logs/.gitkeep
+/storage/mails/*
+!/storage/mails/.gitkeep
+/public/uploads/*
+!/public/uploads/.gitkeep
+!/public/uploads/.htaccess
+
+# Éditeurs / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+node_modules/

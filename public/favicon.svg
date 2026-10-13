@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Vite &amp; Gourmand">
+  <circle cx="32" cy="32" r="31" fill="#7B1E3A"/>
+  <path d="M14 40 a18 18 0 0 1 36 0 Z" fill="#C8963E"/>
+  <rect x="11" y="40" width="42" height="4" rx="2" fill="#FBF7F2"/>
+  <circle cx="32" cy="20" r="3" fill="#C8963E"/>
+  <path d="M22 34 q4 -8 10 -9" stroke="#FBF7F2" stroke-width="2" fill="none" stroke-linecap="round" opacity=".8"/>
+  <path d="M8 49 h10 M6 53 h14" stroke="#C8963E" stroke-width="2" stroke-linecap="round"/>
+</svg>
