@@ -8,7 +8,7 @@ Application web du traiteur bordelais **Vite & Gourmand**. Elle permet de prése
 
 | | |
 |---|---|
-| **Application en ligne** | *à compléter après déploiement* |
+| **Application en ligne** | https://vite-et-gourmand-p8t8.onrender.com (offre gratuite : premier chargement jusqu’à 1 min après une période d’inactivité) |
 | **Gestion de projet** | [Tableau Kanban GitHub Projects](https://github.com/users/Romainfrigolet/projects/1) — 37 user stories |
 | **Documentation** | dossier [`docs/`](docs/) : manuel d'utilisation, charte graphique, documentation technique, gestion de projet |
 
