@@ -7,6 +7,7 @@
  *
  *   php bin/install-db.php            → exécute database/schema.sql puis database/data.sql
  *   php bin/install-db.php --no-data  → structure uniquement
+ *   php bin/install-db.php --if-empty → n'installe que si la base est vide (utilisé au démarrage du conteneur)
  *
  * ATTENTION : schema.sql supprime puis recrée toutes les tables.
  */
@@ -23,11 +24,20 @@ Env::load(BASE_PATH . '/.env');
 $dbName = Env::get('DB_NAME', 'vite_gourmand');
 $dsn = sprintf('mysql:host=%s;port=%s;charset=utf8mb4', Env::get('DB_HOST', '127.0.0.1'), Env::get('DB_PORT', '3306'));
 $options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
-$ca = Env::get('DB_SSL_CA');
-if ($ca !== null && is_file($ca)) {
+$ca = \App\Core\Database::caFile(Env::get('DB_SSL_CA'));
+if ($ca !== null) {
     $options[PDO::MYSQL_ATTR_SSL_CA] = $ca;
 }
 $pdo = new PDO($dsn, Env::get('DB_USER', 'root'), Env::get('DB_PASSWORD', ''), $options);
+
+if (in_array('--if-empty', $argv, true)) {
+    $exists = $pdo->prepare('SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = :db AND table_name = :t');
+    $exists->execute(['db' => $dbName, 't' => 'menu']);
+    if ((int) $exists->fetchColumn() > 0) {
+        echo "Base « $dbName » déjà installée : rien à faire.\n";
+        exit(0);
+    }
+}
 
 $files = ['schema.sql'];
 if (!in_array('--no-data', $argv, true)) {

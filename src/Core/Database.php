@@ -32,8 +32,8 @@ final class Database
             ];
 
             // Connexion chiffrée (TLS) si l'hébergeur de la base l'exige (ex. Aiven)
-            $ca = Env::get('DB_SSL_CA');
-            if ($ca !== null && is_file($ca)) {
+            $ca = self::caFile(Env::get('DB_SSL_CA'));
+            if ($ca !== null) {
                 $options[PDO::MYSQL_ATTR_SSL_CA] = $ca;
             }
 
@@ -43,6 +43,26 @@ final class Database
         }
 
         return self::$pdo;
+    }
+
+    /**
+     * Certificat CA de la base : soit un chemin de fichier, soit le contenu PEM lui-même
+     * (pratique chez un hébergeur où l'on colle le certificat dans une variable d'environnement).
+     */
+    public static function caFile(?string $value): ?string
+    {
+        if ($value === null || $value === '') {
+            return null;
+        }
+        if (str_starts_with(trim($value), '-----BEGIN')) {
+            $pem = str_replace('\\n', "\n", $value);
+            $file = sys_get_temp_dir() . '/vg-db-ca.pem';
+            if (!is_file($file) || file_get_contents($file) !== $pem) {
+                file_put_contents($file, $pem);
+            }
+            return $file;
+        }
+        return is_file($value) ? $value : null;
     }
 
     /** Exécute une requête préparée et retourne le PDOStatement. */
