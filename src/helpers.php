@@ -64,7 +64,6 @@ function abort(int $code, ?string $message = null): never
         403 => "Vous n'avez pas accès à cette page.",
         404 => "La page demandée n'existe pas.",
         405 => 'Méthode non autorisée.',
-        419 => 'Votre session a expiré, veuillez réessayer.',
         500 => 'Une erreur interne est survenue. Veuillez réessayer plus tard.',
     ];
     $message ??= $messages[$code] ?? 'Erreur';
