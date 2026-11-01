@@ -8,6 +8,11 @@ PORT="${PORT:-80}"
 sed -i "s/^Listen .*/Listen ${PORT}/" /etc/apache2/ports.conf
 sed -i "s/<VirtualHost \*:[0-9]*>/<VirtualHost *:${PORT}>/" /etc/apache2/sites-available/000-default.conf
 
+# Installation automatique de la base au premier démarrage (hébergeur) si DB_AUTO_INSTALL=true
+if [ "${DB_AUTO_INSTALL:-false}" = "true" ]; then
+    php bin/install-db.php --if-empty || echo "Installation automatique de la base impossible pour le moment."
+fi
+
 # Attente de la base MySQL (utile avec docker compose) puis synchronisation MongoDB
 i=0
 until php bin/sync-stats.php 2>/dev/null; do
