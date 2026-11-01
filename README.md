@@ -9,7 +9,7 @@ Application web du traiteur bordelais **Vite & Gourmand**. Elle permet de prése
 | | |
 |---|---|
 | **Application en ligne** | *à compléter après déploiement* |
-| **Gestion de projet** | *lien du tableau Kanban à compléter* |
+| **Gestion de projet** | [Tableau Kanban GitHub Projects](https://github.com/users/Romainfrigolet/projects/1) — 37 user stories |
 | **Documentation** | dossier [`docs/`](docs/) : manuel d'utilisation, charte graphique, documentation technique, gestion de projet |
 
 ---
