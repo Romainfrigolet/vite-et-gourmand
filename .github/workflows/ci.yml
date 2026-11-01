@@ -1,0 +1,35 @@
+name: Tests
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Vérification de la syntaxe PHP
+        run: |
+          for f in $(find src config public bin views -name '*.php'); do php -l "$f" > /dev/null || exit 1; done
+
+      - name: Construction et démarrage (docker compose)
+        run: docker compose up -d --build
+
+      - name: Attente de l'application
+        run: |
+          for i in $(seq 1 60); do
+            if curl -fs http://localhost:8080/ > /dev/null && curl -fs "http://localhost:8080/api/menus" | grep -q count; then echo "Application prête"; exit 0; fi
+            sleep 3
+          done
+          docker compose logs; exit 1
+
+      - name: Tests de bout en bout
+        run: bash tests/smoke.sh http://localhost:8080
+
+      - name: Journaux en cas d'échec
+        if: failure()
+        run: docker compose logs
