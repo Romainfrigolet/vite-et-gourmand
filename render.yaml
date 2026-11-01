@@ -24,8 +24,9 @@ services:
         sync: false
       - key: DB_PASSWORD
         sync: false
+      # Certificat public de l'autorité de la base Aiven (pas un secret)
       - key: DB_SSL_CA
-        sync: false
+        value: /var/www/html/docker/ca/aiven-ca.pem
       - key: MONGO_URI
         sync: false
       - key: MONGO_DB
