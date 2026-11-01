@@ -32,6 +32,10 @@ final class Router
 
     public function dispatch(string $method, string $uri): void
     {
+        // Une requête HEAD est traitée comme un GET (le serveur n'envoie pas le corps)
+        if ($method === 'HEAD') {
+            $method = 'GET';
+        }
         $path = rawurldecode(parse_url($uri, PHP_URL_PATH) ?? '/');
         $path = rtrim($path, '/') ?: '/';
 
@@ -46,7 +50,8 @@ final class Router
             }
 
             if ($method === 'POST' && !Csrf::verify($_POST['_csrf'] ?? $_SERVER['HTTP_X_CSRF_TOKEN'] ?? null)) {
-                abort(419, 'Votre session a expiré, veuillez recharger la page et réessayer.');
+                // 403 (et non 419, code non standard qu'Apache transforme en 500)
+                abort(403, 'Votre session a expiré, veuillez recharger la page et réessayer.');
             }
 
             foreach ($route['middlewares'] as $middleware) {

@@ -1,5 +1,7 @@
 # Vite & Gourmand
 
+[![Tests](https://github.com/Romainfrigolet/vite-et-gourmand/actions/workflows/ci.yml/badge.svg)](https://github.com/Romainfrigolet/vite-et-gourmand/actions/workflows/ci.yml)
+
 Application web du traiteur bordelais **Vite & Gourmand**. Elle permet de présenter les menus, de les commander en ligne et de gérer l'activité (commandes, menus, avis, employés, statistiques).
 
 > Projet réalisé dans le cadre de l'ECF du titre professionnel **Développeur Web et Web Mobile** (Studi).
@@ -109,6 +111,17 @@ php -S localhost:8000 -t public public/index.php
 ```
 
 Ouvrir http://localhost:8000. Avec `MAIL_DRIVER=log`, les e-mails ne sont pas envoyés mais enregistrés en HTML dans `storage/mails/`.
+
+## Tests
+
+Les parcours sont testés de bout en bout (38 vérifications : pages, sécurité, inscription, commande, statuts, statistiques MongoDB, e-mails) :
+
+```bash
+docker compose up -d --build
+bash tests/smoke.sh http://localhost:8080
+```
+
+Ces tests sont lancés automatiquement par **GitHub Actions** à chaque push sur `main` et `develop` (`.github/workflows/ci.yml`).
 
 ## Comptes de démonstration
 

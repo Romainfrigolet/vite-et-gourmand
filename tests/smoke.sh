@@ -25,7 +25,8 @@ contains "API filtres (thème Noël)" "/api/menus?theme=1" '"count":2'
 contains "API filtres (prix max 200 €)" "/api/menus?prix_max=200" '"count":3'
 
 echo "== Sécurité"
-check "POST sans jeton CSRF → 419" "$(curl -s -o /dev/null -w '%{http_code}' -X POST "$BASE/contact" -d titre=x)" 419
+check "POST sans jeton CSRF → 403" "$(curl -s -o /dev/null -w '%{http_code}' -X POST "$BASE/contact" -d titre=x)" 403
+check "Requête HEAD acceptée" "$(curl -s -o /dev/null -w '%{http_code}' -I "$BASE/")" 200
 check "Commander sans être connecté → connexion" "$(curl -s -o /dev/null -w '%{redirect_url}' "$BASE/commander/5" | sed "s|$BASE||")" /connexion
 curl -sI "$BASE/" | grep -qi "content-security-policy" && ok "En-tête CSP présent" || ko "En-tête CSP présent"
 
