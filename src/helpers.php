@@ -15,7 +15,9 @@ function e(mixed $value): string
 
 function url(string $path = '/'): string
 {
-    return rtrim((string) Env::get('APP_URL', ''), '/') . '/' . ltrim($path, '/');
+    // Sur Render, l'adresse publique est fournie automatiquement par RENDER_EXTERNAL_URL
+    $base = Env::get('APP_URL') ?? Env::get('RENDER_EXTERNAL_URL', '');
+    return rtrim((string) $base, '/') . '/' . ltrim($path, '/');
 }
 
 function asset(string $path): string

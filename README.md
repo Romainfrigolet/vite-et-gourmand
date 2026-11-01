@@ -180,13 +180,16 @@ Ces tests sont lancés automatiquement par **GitHub Actions** à chaque push sur
 
 ## Déploiement
 
-Le déploiement complet (Render + Aiven + MongoDB Atlas + Brevo) est décrit pas à pas dans la **documentation technique** (`docs/documentation-technique.pdf`, partie « Déploiement »). En résumé :
+Le dépôt contient un **Blueprint Render** (`render.yaml`) : l'application se déploie en quelques clics, sans ligne de commande.
 
-1. Créer une base MySQL (Aiven) et y importer les données : `php bin/install-db.php` avec le `.env` pointant vers Aiven.
-2. Créer un cluster MongoDB Atlas gratuit (M0) et récupérer l'URI `mongodb+srv://…`.
-3. Créer un compte Brevo et récupérer les identifiants SMTP.
-4. Sur Render : *New → Web Service → dépôt GitHub*, environnement **Docker**, puis renseigner les variables d'environnement (`APP_ENV=production`, `APP_DEBUG=false`, `APP_URL`, `DB_*`, `DB_SSL_CA`, `MONGO_*`, `MAIL_*`).
-5. Chaque `git push` sur `main` redéploie automatiquement l'application.
+1. **Aiven** : créer un service MySQL gratuit ; noter hôte, port, utilisateur, mot de passe et copier le certificat CA.
+2. **MongoDB Atlas** : créer un cluster M0 gratuit, un utilisateur de base, autoriser l'accès réseau `0.0.0.0/0` ; copier l'URI `mongodb+srv://…`.
+3. **Brevo** : créer une clé SMTP et valider l'adresse expéditrice.
+4. **Render** : *New → Blueprint* → ce dépôt. Render demande les valeurs secrètes (`DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_SSL_CA` = contenu du certificat, `MONGO_URI`, `MAIL_USERNAME`, `MAIL_PASSWORD`, `MAIL_FROM`, `MAIL_CONTACT`).
+5. Au premier démarrage, le conteneur **crée automatiquement les tables et les données** (`DB_AUTO_INSTALL=true` → `php bin/install-db.php --if-empty`) puis alimente MongoDB.
+6. Chaque `git push` sur `main` redéploie l'application.
+
+Le détail (captures, limites de l'offre gratuite) est dans `docs/documentation-technique.pdf`, partie 10.
 
 ## Workflow Git
 
