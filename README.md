@@ -193,7 +193,19 @@ Le détail (captures, limites de l'offre gratuite) est dans `docs/documentation-
 
 ## Workflow Git
 
-- `main` : version stable, déployée
+- `main` : version stable, déployée automatiquement sur Render
 - `develop` : intégration
-- `feature/*` (et `fix/*`) : une branche par fonctionnalité, créée depuis `develop`, fusionnée dans `develop` après tests (`--no-ff`)
-- `develop` est fusionnée dans `main` une fois testée
+- `feature/*` (et `fix/*`) : une branche par fonctionnalité ou correction, créée depuis `develop`
+- Chaque branche est intégrée par une **Pull Request** (`feature/*` → `develop`, puis `develop` → `main` pour une mise en production). La PR reprend le modèle `.github/pull_request_template.md` (objet, type de modification, liste de vérifications) et n'est fusionnée qu'une fois les **tests GitHub Actions au vert**.
+
+```bash
+git checkout develop && git pull
+git checkout -b feature/ma-fonctionnalite
+# … commits …
+git push -u origin feature/ma-fonctionnalite
+# → ouvrir la Pull Request vers develop sur GitHub, attendre les tests, relire, fusionner
+```
+
+## Maintien en ligne
+
+Le workflow `.github/workflows/keepalive.yml` interroge le site toutes les 10 minutes : l'instance gratuite de Render ne se met pas en veille et la base MySQL d'Aiven garde une activité (une base gratuite inactive peut être éteinte par l'hébergeur).

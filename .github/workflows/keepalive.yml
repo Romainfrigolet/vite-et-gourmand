@@ -1,0 +1,25 @@
+name: Maintien en ligne
+
+# L'offre gratuite de Render met l'application en veille après 15 min sans visite,
+# et l'offre gratuite d'Aiven peut éteindre une base MySQL inactive.
+# Ce workflow interroge régulièrement une page qui lit la base : l'application
+# reste réveillée et la base garde une activité.
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Interroger le site en production
+        run: |
+          for i in 1 2 3 4; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 90 https://vite-et-gourmand-p8t8.onrender.com/menus) || true
+            echo "Tentative $i : HTTP $code"
+            [ "$code" = "200" ] && exit 0
+            sleep 20
+          done
+          echo "::warning::Le site ne répond pas correctement (HTTP $code)"
